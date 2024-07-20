@@ -1,0 +1,31 @@
+CREATE DATABASE manufacturing
+
+USE manufacturing;
+
+
+CREATE TABLE product (
+    product_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    descrip VARCHAR(255),
+    unit_price DOUBLE,
+    qty INT
+);
+
+CREATE TABLE supplier (
+    supplier_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    ph_no VARCHAR(15),
+    addr VARCHAR(500)
+);
+
+CREATE TABLE produc_order (
+    order_id INT PRIMARY KEY,
+    product_id INT,
+    supplier_id INT,
+    order_date DATE,
+    due_date DATE,
+    status VARCHAR(20),
+    FOREIGN KEY (product_id) REFERENCES product(product_id),
+    FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id)
+);
